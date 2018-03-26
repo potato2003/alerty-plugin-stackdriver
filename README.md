@@ -28,6 +28,21 @@ Or install it yourself as:
 * **resource_labels**: Stackdriver Logging monitored resource labels. https://cloud.google.com/logging/docs/api/v2/resource-list
 * **message**: message of alert. `${command}` is replaced with a given command, `${hostname}` is replaced with the hostname ran the command, `${output}` is replaced with the output. The default is `${output}`.
 
+
+```
+log_path: STDOUT
+log_level: debug
+plugins:
+  - type: stackdriver
+    keyfile: "example_keyfile.json"
+    project_id: "example_project"
+    log_name: "example_alerty_log"
+    resource_type: "gae_app"
+    resource_labels:
+      module_id: "1"
+      version_id: "20150925t173233"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -38,3 +53,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/potato2003/alerty-plugin-stackdriver.
 
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
