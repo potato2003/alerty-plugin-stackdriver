@@ -1,0 +1,11 @@
+log_path: STDOUT
+log_level: debug
+plugins:
+  - type: stackdriver
+    keyfile: "example_keyfile.json"
+    project_id: "example_project"
+    log_name: "example_alerty_log"
+    resource_type: "gae_app"
+    resource_labels:
+      module_id: "1"
+      version_id: "20150925t173233"
