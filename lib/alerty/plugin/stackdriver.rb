@@ -11,7 +11,9 @@ class Alerty
         # https://cloud.google.com/logging/docs/api/v2/resource-list
         @resource_type   = config.resource_type
         @resource_labels = config.resource_labels
-        @log_name        = config.log_name || 'alerty'
+        @app_name        = config.app_name    || 'alerty'
+        @app_version     = config.app_version || 'default'
+        @log_name        = config.log_name    || 'alerty'
         @message         = config.message
         @num_retries     = config.num_retries || DEFAULT_NUM_OF_RETIRES
 
@@ -61,11 +63,24 @@ class Alerty
       end
 
       def payload(record)
-        if @message
-          expand_placeholder(@message, record)
-        else
-          record[:output]
-        end
+        body = if @message
+                 expand_placeholder(@message, record)
+               else
+                 record[:output]
+               end
+
+        # support Stackdriver Error Reporting. https://cloud.google.com/error-reporting/docs/formatting-error-messages
+        {
+          serviceContext: {
+            service: @app_name,
+            app_version: @app_version
+          },
+          message: body,
+          context: {
+            functionName: record[:command],
+            lineNumber: 0
+          }
+        }
       end
 
       def expand_placeholder(str, record)
