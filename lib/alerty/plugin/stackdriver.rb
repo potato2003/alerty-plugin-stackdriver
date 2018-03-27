@@ -55,6 +55,7 @@ class Alerty
         e.resource.labels = @resource_labels if @resource_labels
         e.log_name        = @log_name
         e.payload         = payload(record)
+        e.severity        = :ERROR
 
         e
       end
