@@ -26,6 +26,8 @@ Or install it yourself as:
 * **log_name**: Stackdriver log name.
 * **resource_type**: Stackdriver Logging monitored resource types. https://cloud.google.com/logging/docs/api/v2/resource-list
 * **resource_labels**: Stackdriver Logging monitored resource labels. https://cloud.google.com/logging/docs/api/v2/resource-list
+* **app_name**: your application name, the default name is `alerty`.
+* **app_version**: your application version, the default value is `default`.
 * **message**: message of alert. `${command}` is replaced with a given command, `${hostname}` is replaced with the hostname ran the command, `${output}` is replaced with the output. The default is `${output}`.
 
 
