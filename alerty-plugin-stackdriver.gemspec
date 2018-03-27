@@ -1,7 +1,7 @@
 # coding: utf-8
 Gem::Specification.new do |spec|
   spec.name          = "alerty-plugin-stackdriver"
-  spec.version       = "0.1.0"
+  spec.version       = "0.2.0"
   spec.authors       = ["potato2003"]
   spec.email         = ["potato2003@gmail.com"]
 
