@@ -77,8 +77,12 @@ class Alerty
           },
           message: body,
           context: {
-            functionName: record[:command],
-            lineNumber: 0
+            user: ENV['USER'],
+            reportLocation: {
+              filePath: 'alerty',
+              lineNumber: 0,
+              functionName: record[:command]
+            }
           }
         }
       end
