@@ -69,7 +69,8 @@ class Alerty
                  record[:output]
                end
 
-        # support Stackdriver Error Reporting. https://cloud.google.com/error-reporting/docs/formatting-error-messages
+        # support Stackdriver Error Reporting.
+        # see. https://cloud.google.com/error-reporting/docs/formatting-error-messages
         {
           serviceContext: {
             service: @app_name,
@@ -80,7 +81,7 @@ class Alerty
             user: ENV['USER'],
             reportLocation: {
               filePath: 'alerty',
-              lineNumber: 0,
+              lineNumber: 0, # 0 means that the line number is unknown.
               functionName: record[:command]
             }
           }
