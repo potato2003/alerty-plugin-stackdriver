@@ -26,14 +26,14 @@ class Alerty
       def alert(record)
         entry = make_entry(record)
 
-        retrable(tries: @num_retries) do
+        retriable(tries: @num_retries) do
           @stackdriver.write_entries(entry)
           Alerty.logger.info "Sent #{{log_entry: entry.inspect}} to #{@log_name}"
         end
       end
 
     private
-      def retrable(options = {}, &block)
+      def retriable(options = {}, &block)
         tries = options[:tries] || DEFAULT_NUM_OF_RETIRES
 
         retries = 0
